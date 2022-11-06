@@ -1,8 +1,6 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-// console.log(galleryItems);
-
 const galleryContainerEl = document.querySelector(".gallery");
 const galleryMarkup = createGalleryItemsMarkup(galleryItems);
 
@@ -29,5 +27,14 @@ function createGalleryItemsMarkup(galleryItems) {
 
 function onGalleryContainerClick(event) {
   event.preventDefault();
-  console.log(event.target.dataset.source);
+
+  basicLightbox
+    .create(
+      `<img
+      class="gallery__image"
+      src="${event.target.dataset.source}"
+      
+    />`
+    )
+    .show();
 }
