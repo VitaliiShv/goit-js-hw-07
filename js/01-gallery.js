@@ -1,11 +1,13 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
+const modalInstance = basicLightbox.create(`
+<img class="gallery__image"/>`);
+
 const galleryContainerEl = document.querySelector(".gallery");
+const modalImage = modalInstance.element().querySelector(".gallery__image");
 
 const galleryMarkup = createGalleryItemsMarkup(galleryItems);
-
-let modalInstance = null;
 
 galleryContainerEl.insertAdjacentHTML("beforeend", galleryMarkup);
 
@@ -36,14 +38,7 @@ function onGalleryImageClick(event) {
   if (event.currentTarget === event.target) {
     return;
   }
-
-  modalInstance = basicLightbox.create(
-    `<img
-      class="gallery__image"
-      src="${event.target.dataset.source}"
-          />`
-  );
-
+  modalImage.src = event.target.dataset.source;
   modalInstance.show();
 }
 
