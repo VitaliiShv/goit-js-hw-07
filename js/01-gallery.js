@@ -13,8 +13,6 @@ galleryContainerEl.insertAdjacentHTML("beforeend", galleryMarkup);
 
 galleryContainerEl.addEventListener("click", onGalleryImageClick);
 
-// window.addEventListener("keydown", onEscapeKeyPress);
-
 function createGalleryItemsMarkup(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
