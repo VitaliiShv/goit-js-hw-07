@@ -1,5 +1,4 @@
 import { galleryItems } from "./gallery-items.js";
-// Change code below this line
 
 const modalInstance = basicLightbox.create(`
 <img class="gallery__image"/>`);
@@ -12,6 +11,8 @@ const galleryMarkup = createGalleryItemsMarkup(galleryItems);
 galleryContainerEl.insertAdjacentHTML("beforeend", galleryMarkup);
 
 galleryContainerEl.addEventListener("click", onGalleryImageClick);
+
+modalInstance.element().addEventListener("click", onModalclose);
 
 function createGalleryItemsMarkup(galleryItems) {
   return galleryItems
@@ -45,4 +46,9 @@ function onEscapeKeyPress(event) {
     window.removeEventListener("keydown", onEscapeKeyPress);
     modalInstance.close();
   }
+}
+
+function onModalclose(event) {
+  window.removeEventListener("keydown", onEscapeKeyPress);
+  modalInstance.element().removeEventListener("click", onModalclose);
 }
